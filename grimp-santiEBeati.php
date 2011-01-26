@@ -3,7 +3,6 @@
 Plugin Name: Grimp - Santi e Beati
 Plugin URI: http://git.grimp.eu/projects/wp-plugin-santiebeati
 Description: This plugin will allow you to show today and tomorrow Saints
-Dependencies: grimp-php/grimp-php.php
 Version: 0.1
 Author: Fabio Alessandro Locati
 Author URI: http://grimp.eu
