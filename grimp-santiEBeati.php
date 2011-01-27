@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Grimp - Santi e Beati
-Plugin URI: http://git.grimp.eu/projects/wp-plugin-santiebeati
+Plugin URI: http://git.grimp.eu/projects/wp-plugin-seb
 Description: This plugin will allow you to show today and tomorrow Saints
 Version: 0.1
 Author: Fabio Alessandro Locati
@@ -9,6 +9,21 @@ Author URI: http://grimp.eu
 License: GPL2
 */
 
+/*  Copyright 2011 Grimp di Fabio Alessandro Locati (email: legal@grimp.eu)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License, version 2, as
+    published by the Free Software Foundation.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 
 add_action("widgets_init", "grimp_seb_init");
 
@@ -19,12 +34,8 @@ function grimp_seb_init(){
 
 class grimp_seb extends WP_Widget {
     function grimp_seb() {
-        /* Impostazione del widget */
         $widget_ops = array( 'classname' => 'grimp-seb', 'description' => 'This plugin allows you to show today and tomorrow Saints' );
-
-        /* Impostazioni di controllo del widget */
         $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'grimp-seb' );
-        /* Creiamo il widget */
         $this->WP_Widget( 'grimp-seb', 'Santi e Beati', $widget_ops, $control_ops );
     }
 
@@ -42,7 +53,7 @@ class grimp_seb extends WP_Widget {
             echo "<SCRIPT LANGUAGE=javascript src='http://www.santiebeati.it/santididomani.txt'></SCRIPT>";
         echo $after_widget;
     }
-    
+
     function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
         $instance['title'] = strip_tags( $new_instance['title'] );
@@ -51,8 +62,6 @@ class grimp_seb extends WP_Widget {
     }
 
     function form( $instance ) {
-
-        /* Impostazioni di default del widget */
         $defaults = array( 'title' => 'Santi', 'day' => 'today' );
         $instance = wp_parse_args( (array) $instance, $defaults );
         ?>
